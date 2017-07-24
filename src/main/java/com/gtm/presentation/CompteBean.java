@@ -33,6 +33,7 @@ public class CompteBean implements Serializable {
 	@PostConstruct
 	public void init(){
 		numerocompte1 = 1;
+		montant = 5;
 	}
 
 	//Getter Compte
@@ -65,8 +66,8 @@ public class CompteBean implements Serializable {
 	public void setNumerocompte2(int numerocompte2) {
 		this.numerocompte2 = numerocompte2;
 	}
-
-	public float getMontant() {
+	
+	public int getMontant() {
 		return montant;
 	}
 
@@ -74,7 +75,6 @@ public class CompteBean implements Serializable {
 		this.montant = montant;
 	}
 
-	
 	public List<Compte> getListeCompte() {
 		List<Compte> listeCompte = null;
 		listeCompte = compteservice.lireTous();
@@ -94,6 +94,6 @@ public class CompteBean implements Serializable {
 		} catch (SaisieException e) {
 			
 		}
-		return null; 
+		return "page404"; 
 	}
 }

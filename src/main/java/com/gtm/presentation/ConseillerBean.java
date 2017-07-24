@@ -46,7 +46,7 @@ public class ConseillerBean implements Serializable {
 	 * Methode getListeConseiller servant a obtenir la liste de tous les clients
 	 * en appelant la couche Service. Cette methode n'a pas de parametre
 	 * 
-	 * @return a liste de Conseiller qui lui a ete retourne par la couche
+	 * @return a liste de Conseil+ler qui lui a ete retourne par la couche
 	 *         service
 	 */
 	public List<Conseiller> getListeConseiller() {

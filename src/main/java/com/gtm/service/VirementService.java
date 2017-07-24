@@ -3,6 +3,7 @@ package com.gtm.service;
 import java.io.Serializable;
 
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import org.apache.log4j.Logger;
@@ -18,6 +19,8 @@ import com.gtm.exception.SaisieException;
 public class VirementService implements Serializable{
 
 	private final static Logger log = Logger.getLogger(VirementService.class);
+	@Inject
+	IntCompteCrudService compteservice;
 
 //	public boolean EffectuerVirement(CompteCourant compteDebite, Compte compteCredite, long montant) throws SaisieException{
 //		if(montant>(compteDebite.getSolde()+compteDebite.getPlafondDeDecouvert()))throw SaisieException("Le solde du compte "
@@ -48,6 +51,9 @@ public class VirementService implements Serializable{
 				long SoldeCC = compteCredite.getSolde();
 				compteDebite.setSolde(SoldeCD - montant);
 				compteCredite.setSolde(SoldeCC + montant);
+				compteservice.modifier(compteDebite);
+				compteservice.modifier(compteCredite);
+				
 				log.info("Virement [Numero CompteDébité = " + compteDebite.getIdCompte() + ", Numero CompteCrédité = " + 
 				compteCredite.getIdCompte() + ", Montant = " + montant + ", Nouveau solde du CompteDébité = "
 				+ compteDebite.getSolde() + " €, Nouveau solde du Compte Crédité = " +compteCredite.getSolde() +" € ]" );

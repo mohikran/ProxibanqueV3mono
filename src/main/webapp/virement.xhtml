@@ -53,21 +53,21 @@
 
 
 						<h:panelGrid columns="2" cellpadding="5">
-							<p:outputLabel value="Numero du compte a debiter : " />
-							<p:inputText id="debite" value="#{compteBean.numerocompte1}">
+							<h:outputLabel value="Numero du compte a debiter : " />
+							<h:inputText id="debite" value="#{compteBean.numerocompte1}">
 								<f:convertNumber integerOnly="true" />
 
-							</p:inputText>
-							<p:outputLabel value="Numero du compte a crediter : " />
-							<p:inputText id="credite" value="#{compteBean.numerocompte2}">
+							</h:inputText>
+							<h:outputLabel value="Numero du compte a crediter : " />
+							<h:inputText id="credite" value="#{compteBean.numerocompte2}">
 								<f:convertNumber integerOnly="true" />
 
-							</p:inputText>
+							</h:inputText>
 
-							<p:outputLabel value="Montant transaction  : " />
-							<p:inputText id="Montant" value="#{compteBean.montant}">
+							<h:outputLabel value="Montant transaction  : " />
+							<h:inputText id="Montant" value="#{compteBean.montant}">
 								<f:convertNumber integerOnly="true" />
-							</p:inputText>
+							</h:inputText>
 						</h:panelGrid>
 
 						<p:commandButton id="submitlogin" value="Submit"
