@@ -23,6 +23,8 @@ public class CompteBean implements Serializable {
 	private int numerocompte1; 
 	private int numerocompte2;
 	private int montant;
+	private String erreur;
+	
 	
 	@Inject
 	IntCompteCrudService compteservice;
@@ -34,6 +36,7 @@ public class CompteBean implements Serializable {
 	public void init(){
 		numerocompte1 = 1;
 		montant = 5;
+		erreur = "";
 	}
 
 	//Getter Compte
@@ -74,6 +77,15 @@ public class CompteBean implements Serializable {
 	public void setMontant(int montant) {
 		this.montant = montant;
 	}
+	
+
+	public String getErreur() {
+		return erreur;
+	}
+
+	public void setErreur(String erreur) {
+		this.erreur = erreur;
+	}
 
 	public List<Compte> getListeCompte() {
 		List<Compte> listeCompte = null;
@@ -92,8 +104,8 @@ public class CompteBean implements Serializable {
 			
 			return "listeclient";
 		} catch (SaisieException e) {
-			
+			erreur = e.getMessage();
 		}
-		return "page404"; 
+		return "pageSaisie"; 
 	}
 }

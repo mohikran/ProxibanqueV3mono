@@ -45,8 +45,9 @@ public class VirementService implements Serializable{
 
 	public boolean EffectuerVirement(Compte compteDebite, Compte compteCredite, int montant) throws SaisieException{
 
-			if(montant>compteDebite.getSolde())throw new SaisieException("Le solde du compte "
-					+ "débité n'est pas assez élevé pour effectuer ce virement");
+		if(compteDebite.getClass().equals(CompteCourant.class)){
+			if(montant>(compteDebite.getSolde()+((CompteCourant) compteDebite).getPlafondDeDecouvert()))throw new SaisieException("Le solde du compte débité n°"
+					+ compteDebite.getIdCompte() + " : " + compteDebite.getSolde() + "€, n'est pas assez élevé pour effectuer un virement de " + montant +"€.");
 			else{long SoldeCD = compteDebite.getSolde();
 				long SoldeCC = compteCredite.getSolde();
 				compteDebite.setSolde(SoldeCD - montant);
@@ -54,11 +55,27 @@ public class VirementService implements Serializable{
 				compteservice.modifier(compteDebite);
 				compteservice.modifier(compteCredite);
 				
-				log.info("Virement [Numero CompteDébité = " + compteDebite.getIdCompte() + ", Numero CompteCrédité = " + 
+				log.fatal("Virement [Numero CompteDébité = " + compteDebite.getIdCompte() + ", Numero CompteCrédité = " + 
+				compteCredite.getIdCompte() + ", Montant = " + montant + ", Nouveau solde du CompteDébité = "
+				+ compteDebite.getSolde() + " €, Nouveau solde du Compte Crédité = " +compteCredite.getSolde() +" € ]" );
+				return true;
+			}}
+		else{
+			if(montant>compteDebite.getSolde())throw new SaisieException("Le solde du compte débité n°"
+					+ compteDebite.getIdCompte() + " : " + compteDebite.getSolde() + "€, n'est pas assez élevé pour effectuer un virement de " + montant +"€.");
+			else{long SoldeCD = compteDebite.getSolde();
+				long SoldeCC = compteCredite.getSolde();
+				compteDebite.setSolde(SoldeCD - montant);
+				compteCredite.setSolde(SoldeCC + montant);
+				compteservice.modifier(compteDebite);
+				compteservice.modifier(compteCredite);
+				
+				log.fatal("Virement [Numero CompteDébité = " + compteDebite.getIdCompte() + ", Numero CompteCrédité = " + 
 				compteCredite.getIdCompte() + ", Montant = " + montant + ", Nouveau solde du CompteDébité = "
 				+ compteDebite.getSolde() + " €, Nouveau solde du Compte Crédité = " +compteCredite.getSolde() +" € ]" );
 				return true;
 			}
+		}
 		
 	}
 }

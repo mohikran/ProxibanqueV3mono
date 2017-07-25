@@ -3,18 +3,18 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  
-  
-  <welcome-file-list>
+	<display-name>Archetype Created Web Application</display-name>
+
+
+	<welcome-file-list>
 		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
-  
-  
-  <error-page>
+
+
+	<error-page>
 		<error-code>404</error-code>
 		<location>/page404.xhtml</location>
 	</error-page>
-  
+	
 </web-app>
 
