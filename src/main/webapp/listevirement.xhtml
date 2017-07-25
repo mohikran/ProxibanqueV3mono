@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<h:outputStylesheet library="css" name="config.css" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>page liste</title>
+</head>
+<h:body>
+	<ui:composition template="template.xhtml">
+
+		<ui:define name="content">
+
+			<div class="ui-g-2"></div>
+			<div class="ui-g-8" id="contourliste">
+				<h:form>
+					<p:dataTable id="tablelistevirement" var="virement"
+						value="Empty">
+						<p:column headerText="montant">
+							<h:outputText value="non" />
+						</p:column>
+
+						<p:column headerText="Numero Compte Credite">
+							<h:outputText value="ono" />
+						</p:column>
+
+
+
+
+					</p:dataTable>
+				</h:form>
+			</div>
+			<div class="ui-g-2"></div>
+
+
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+</html>

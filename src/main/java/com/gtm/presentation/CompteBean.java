@@ -8,8 +8,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.gtm.dao.IntVirement;
 import com.gtm.domaine.Client;
 import com.gtm.domaine.Compte;
+import com.gtm.domaine.Virement;
 import com.gtm.exception.SaisieException;
 import com.gtm.service.IntClientCrudService;
 import com.gtm.service.IntCompteCrudService;
@@ -31,6 +33,9 @@ public class CompteBean implements Serializable {
 	
 	@Inject
 	VirementService virementservice;
+	
+	@Inject 
+	IntVirement virementdao;
 	
 	@PostConstruct
 	public void init(){
@@ -91,6 +96,15 @@ public class CompteBean implements Serializable {
 		List<Compte> listeCompte = null;
 		listeCompte = compteservice.lireTous();
 		return listeCompte;
+
+	}
+	
+	
+	
+	public List<Virement> getListeVirement() {
+		List<Virement> listevirement = null;
+		listevirement = virementdao.lireTous();
+		return listevirement;
 
 	}
 	
