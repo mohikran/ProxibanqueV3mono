@@ -32,6 +32,7 @@ public class Virement {
 		this.comptedebite = comptedebite;
 		this.compteCredite = compteCredite;
 		this.montant = montant;
+		this.date = new Date();
 	}
 
 	public Virement() {
@@ -47,6 +48,15 @@ public class Virement {
 	}
 
 	
+	public Virement(int id, Compte comptedebite, Compte compteCredite, Date date, int montant) {
+		super();
+		this.id = id;
+		this.comptedebite = comptedebite;
+		this.compteCredite = compteCredite;
+		this.date = date;
+		this.montant = montant;
+	}
+
 	public int getId() {
 		return id;
 	}

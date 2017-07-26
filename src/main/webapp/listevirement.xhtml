@@ -20,15 +20,18 @@
 			<div class="ui-g-8" id="contourliste">
 				<h:form>
 					<p:dataTable id="tablelistevirement" var="virement"
-						value="Empty">
+						value="#{compteBean.listeVirement}">
 						<p:column headerText="montant">
-							<h:outputText value="non" />
+							<h:outputText value="#{virement.montant}" />
 						</p:column>
 
 						<p:column headerText="Numero Compte Credite">
-							<h:outputText value="ono" />
+							<h:outputText value="#{virement.compteCredite}" />
 						</p:column>
 
+						<p:column headerText="Numero Compte Credite">
+							<h:outputText value="#{virement.comptedebite}" />
+						</p:column>
 
 
 

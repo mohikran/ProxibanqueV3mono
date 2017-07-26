@@ -1,6 +1,9 @@
 package com.gtm.service;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -59,8 +62,18 @@ public class VirementService implements Serializable{
 				compteCredite.setSolde(SoldeCC + montant);
 				compteservice.modifier(compteDebite);
 				compteservice.modifier(compteCredite);
-				Virement virement = new Virement(compteDebite, compteCredite, montant); ////ICIIIII
-				virementdao.sauverEnBase(virement);
+				
+//				  Calendar cal = Calendar.getInstance();
+//				  java.util.Date date2= cal.getTime();
+				
+				//java.util.Date date = new java.util.Date();
+				Virement virement2 = new Virement(compteDebite, compteCredite, montant);
+      
+//				Virement virement = new Virement(compteDebite, compteCredite, date2, montant); ////ICIIIII
+
+//				virementdao.sauverEnBase(virement);
+				virementdao.sauverEnBase(virement2);
+
 				log.fatal("Virement [Numero CompteDébité = " + compteDebite.getIdCompte() + ", Numero CompteCrédité = " + 
 				compteCredite.getIdCompte() + ", Montant = " + montant + ", Nouveau solde du CompteDébité = "
 				+ compteDebite.getSolde() + " €, Nouveau solde du Compte Crédité = " +compteCredite.getSolde() +" € ]" );
